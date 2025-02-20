@@ -22,5 +22,7 @@ Route::view('profile', 'profile')
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 Route::get('/clientss/create', [ClientController::class, 'create'])->name('clients.create');
 Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+Route::put('/clients/{client}/update', [ClientController::class, 'update'])->name('clients.update');
+Route::delete('/clients/{client}/delete', [ClientController::class, 'delete'])->name('clients.delete');
 
 require __DIR__.'/auth.php';
