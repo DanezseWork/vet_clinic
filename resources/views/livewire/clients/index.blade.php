@@ -236,7 +236,24 @@ $(document).ready(function () {
         });
     }
 
-    
+    $('#perPage').change(function () {
+            let perPage = $(this).val();
+            
+            $.ajax({
+                url: "{{ route('clients.index') }}",
+                type: "GET",
+                data: { per_page: perPage },
+                success: function (response) {
+                    // Replace the table body with the new content
+                    $('#clients-table-body').html(response.clients);
+                    // Update pagination
+                    $('#clients-pagination').html(response.pagination);
+                },
+                error: function () {
+                    alert("Failed to fetch data.");
+                }
+            });
+        });
 
 });
 </script>
